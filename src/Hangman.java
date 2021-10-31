@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Hangman {
 
-    private int attempts = 5;
+    private int attempts = 3;
     private boolean isNotComplete = true;
     private RandomWord word = new RandomWord();
     private Scanner scanner = new Scanner(System.in);
@@ -10,6 +10,7 @@ public class Hangman {
 
     public void run() {
         do{
+            displayWord();
             getUserInput();
             checkUserInput();
         } while (isNotComplete);
@@ -22,19 +23,20 @@ public class Hangman {
             if(word.isComplete()){
                 System.out.println("You have won!");
                 System.out.println(word);
+                isNotComplete = false;
             }
         } else {
             attempts--;
 
             if(attempts == 0){
                 System.out.println("You have lost");
-                System.out.println(word);
+                isNotComplete = false;
             }
         }
     }
 
     void getUserInput(){
-        System.out.println("Enter your guess: ");
+        System.out.print("Enter your guess: ");
         lastGuess = scanner.next().charAt(0);
     }
 
