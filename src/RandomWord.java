@@ -33,20 +33,22 @@ public class RandomWord {
     }
 
     public boolean addGuess(char sign) {
+        boolean isPartOfWord = false;
+
         for (int i = 0; i < chosenWord.length(); i++) {
             if (sign == chosenWord.charAt(i)) {
                 characters[i] = sign;
-                return true;
+                isPartOfWord = true;
             }
             if (Character.toUpperCase(sign) == chosenWord.charAt(i)) {
                 characters[i] = Character.toUpperCase(sign);
-                return true;
+                isPartOfWord = true;
             }
             if (Character.toLowerCase(sign) == chosenWord.charAt(i)) {
                 characters[i] = Character.toLowerCase(sign);
-                return true;
+                isPartOfWord = true;
             }
         }
-        return false;
+        return isPartOfWord;
     }
 }
